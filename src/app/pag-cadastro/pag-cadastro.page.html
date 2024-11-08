@@ -1,30 +1,43 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>pag-cadastro</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+  
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-item>
-    <ion-input type="email" placeholder="Digite seu e-mail"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input label="nome" placeholder="Digite seu nome"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input label="CPF" placeholder="Digite seu cpf"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input label="celular" placeholder="Digite seu celular"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input label="Senha" placeholder="Digite sua senha"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input label="Senha" placeholder="Confirme sua senha"></ion-input>
-  </ion-item>
-  <ion-button shape="round" routerLink="/pag-login">cadastrar</ion-button>
+  <ion-grid class="container">
+    <ion-row>
+      <ion-col></ion-col>
+    <ion-col><ion-input label="E-mail:" type="email" placeholder="Digite seu e-mail"></ion-input></ion-col>
+    <ion-col></ion-col>  
+    </ion-row>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col><ion-input label="Nome:" placeholder="Digite seu nome"></ion-input></ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col><ion-input label="CPF:" placeholder="Digite seu cpf"></ion-input></ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col><ion-input label="Celular:" placeholder="Digite seu celular"></ion-input></ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col><ion-input label="Senha:" placeholder="Digite sua senha"></ion-input></ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col><ion-input label="Senha:" placeholder="Confirme sua senha"></ion-input></ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col><ion-button shape="round" routerLink="/pag-login">cadastrar</ion-button></ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

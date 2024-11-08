@@ -1,12 +1,30 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
+    <ion-title>Buscar Produtos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-button shape="round" routerLink="/pag-login">login</ion-button>
-  <ion-button shape="round" routerLink="/pag-cadastro">cadastar</ion-button>
+<ion-content>
+  <ion-item>
+    <ion-input [(ngModel)]="searchTerm" placeholder="Digite um termo para buscar"></ion-input>
+    <ion-button (click)="search()">Buscar</ion-button>
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-button shape="round" routerLink="/pag-login">login</ion-button>
+      <ion-button shape="round" routerLink="/pag-cadastro">cadastar</ion-button>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list>
+    <ion-item *ngFor="let product of products">
+      <ion-thumbnail slot="start">
+        <img [src]="product.thumbnail" alt="Imagem do produto">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ product.title }}</h2>
+        <p>Preço: {{ product.price | currency: 'BRL' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

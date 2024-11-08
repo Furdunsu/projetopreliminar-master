@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Buscar Produtos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Campo de busca -->
+  <ion-searchbar [(ngModel)]="searchQuery" placeholder="Buscar produtos..." debounce="500"></ion-searchbar>
+
+  <!-- Botão de busca -->
+  <ion-button expand="full" (click)="searchItems()">Buscar</ion-button>
+
+  <!-- Exibição dos itens da busca -->
+  <ion-list *ngIf="items.length > 0; else noResults">
+    <ion-item *ngFor="let item of items" (click)="openProduct(item)">
+      <ion-thumbnail slot="start">
+        <img [src]="item.thumbnail" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.price | currency }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Template caso não haja resultados -->
+  <ng-template #noResults>
+    <p>Nenhum produto encontrado.</p>
+  </ng-template>
+</ion-content>
