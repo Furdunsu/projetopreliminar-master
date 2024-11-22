@@ -1,17 +1,56 @@
 <ion-header [translucent]="true">
-  
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-grid>
-    <ion-row>
-      <ion-col><ion-input label="Usuário:" placeholder="Digite seu E-mail"></ion-input></ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><ion-input label="Senha:" placeholder="Digite sua senha"></ion-input></ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col><ion-button shape="round" routerLink="/pag-inicial">logar</ion-button></ion-col>
-    </ion-row>
-  </ion-grid>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-input
+          formControlName="email"
+          label="Usuário:"
+          placeholder="Digite seu E-mail"
+          type="email"
+          [class.invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+        ></ion-input>        
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error-message">
+          <small *ngIf="loginForm.get('email')?.hasError('required')">O e-mail é obrigatório.</small>
+          <small *ngIf="loginForm.get('email')?.hasError('email')">Digite um e-mail válido.</small>
+        </div>
+        
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-input
+          formControlName="senha"
+          label="Senha:"
+          placeholder="Digite sua senha"
+          type="password"
+          [class.invalid]="loginForm.get('senha')?.invalid && loginForm.get('senha')?.touched"
+        ></ion-input>        
+          <div *ngIf="loginForm.get('senha')?.invalid && loginForm.get('senha')?.touched" class="error-message">
+            <small *ngIf="loginForm.get('senha')?.hasError('required')">A senha é obrigatória.</small>
+            <small *ngIf="loginForm.get('senha')?.hasError('minlength')">A senha deve ter pelo menos 6 caracteres.</small>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button
+            shape="round"
+            type="submit"
+            [disabled]="loginForm.invalid"
+          >
+            Logar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

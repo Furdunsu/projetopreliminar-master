@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { PagLoginPageRoutingModule } from './pag-login-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { PagLoginPage } from './pag-login.page';
 
@@ -13,7 +14,8 @@ import { PagLoginPage } from './pag-login.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    PagLoginPageRoutingModule
+    PagLoginPageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [PagLoginPage]
 })

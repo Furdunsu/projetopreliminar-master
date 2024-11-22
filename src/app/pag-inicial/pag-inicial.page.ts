@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { MercadoLivreService } from '../service/mercadolivre.service';
 
+
 @Component({
-  selector: 'app-home',
+  selector: 'app-pag-inicial',
   templateUrl: 'pag-inicial.page.html',
   styleUrls: ['pag-inicial.page.scss'],
 })

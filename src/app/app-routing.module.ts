@@ -22,6 +22,7 @@ const routes: Routes = [
   {
     path: 'pag-cadastro',
     loadChildren: () => import('./pag-cadastro/pag-cadastro.module').then( m => m.PagCadastroPageModule)
+    
   },
   {
     path: 'produto',

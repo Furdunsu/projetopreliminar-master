@@ -13,7 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     IonicModule,
-    PagCadastroPageRoutingModule
+    PagCadastroPageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [PagCadastroPage]
 })

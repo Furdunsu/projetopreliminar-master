@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
+import { RouterModule } from '@angular/router';
  // Importando os módulos do Firebase
  import {  AngularFireModule } from "@angular/fire/compat";
  import {  AngularFireAuthModule } from "@angular/fire/compat/auth";
@@ -26,7 +25,8 @@ import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
     AngularFireStorageModule,     // Armazenamento
     AngularFireAnalyticsModule,   // Analytics
     AngularFireMessagingModule,   // Cloud Messaging
-    AngularFireFunctionsModule  
+    AngularFireFunctionsModule,
+    RouterModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
