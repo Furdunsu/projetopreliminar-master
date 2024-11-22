@@ -19,4 +19,5 @@ export class  PagInicialPage {
       console.log(this.products);  // Ver os resultados no console
     });
   }
+  
 }

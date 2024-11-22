@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PagCadastroPageRoutingModule } from './pag-cadastro-routing.module';
 
 import { PagCadastroPage } from './pag-cadastro.page';
-
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,

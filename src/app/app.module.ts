@@ -8,9 +8,26 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+ // Importando os módulos do Firebase
+ import {  AngularFireModule } from "@angular/fire/compat";
+ import {  AngularFireAuthModule } from "@angular/fire/compat/auth";
+ import {  environment } from "../environments/environment";
+ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
+import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
+import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
+
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,AngularFirestoreModule,       // Firestore
+    AngularFireStorageModule,     // Armazenamento
+    AngularFireAnalyticsModule,   // Analytics
+    AngularFireMessagingModule,   // Cloud Messaging
+    AngularFireFunctionsModule  
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
