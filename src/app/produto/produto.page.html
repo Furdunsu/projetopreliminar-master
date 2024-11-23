@@ -1,33 +1,41 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Buscar Produtos
-    </ion-title>
+    <ion-title>Produtos</ion-title>
   </ion-toolbar>
+  <ion-button routerLink="/carrinho" slot="end">
+    <ion-icon name="cart"></ion-icon>
+    Carrinho
+  </ion-button>
+
 </ion-header>
 
 <ion-content>
-  <!-- Campo de busca -->
-  <ion-searchbar [(ngModel)]="searchQuery" placeholder="Buscar produtos..." debounce="500"></ion-searchbar>
+  
+  <!-- Campo de pesquisa -->
+  <ion-item>
+    <ion-label position="floating">Buscar Produto</ion-label>
+    <ion-input [(ngModel)]="searchTerm" placeholder="Digite o nome do produto"></ion-input>
+  </ion-item>
 
-  <!-- Botão de busca -->
-  <ion-button expand="full" (click)="searchItems()">Buscar</ion-button>
+  <!-- Botão para realizar a busca -->
+  <ion-button expand="full" (click)="listarProdutos(searchTerm)">Buscar</ion-button>
 
-  <!-- Exibição dos itens da busca -->
-  <ion-list *ngIf="items.length > 0; else noResults">
-    <ion-item *ngFor="let item of items" (click)="openProduct(item)">
+  <!-- Exibição dos produtos encontrados -->
+  <ion-list *ngIf="produtos.length > 0">
+    <ion-item *ngFor="let produto of produtos">
+      <!-- Miniatura clicável do produto -->
       <ion-thumbnail slot="start">
-        <img [src]="item.thumbnail" />
+        <img [src]="produto.thumbnail" (click)="obterDetalhesProduto(produto.id)" />
       </ion-thumbnail>
       <ion-label>
-        <h2>{{ item.title }}</h2>
-        <p>{{ item.price | currency }}</p>
+        <h2>{{ produto.title }}</h2>
+        <p>{{ produto.price | currency }}</p>
       </ion-label>
     </ion-item>
   </ion-list>
 
-  <!-- Template caso não haja resultados -->
-  <ng-template #noResults>
+  <!-- Mensagem caso não haja produtos -->
+  <div *ngIf="produtos.length === 0">
     <p>Nenhum produto encontrado.</p>
-  </ng-template>
+  </div>
 </ion-content>

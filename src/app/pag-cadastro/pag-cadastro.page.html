@@ -1,65 +1,125 @@
-<ion-row>
-  <ion-col></ion-col>
-  <ion-col>
-    <ion-input formControlName="email" label="E-mail:" type="email" placeholder="Digite seu e-mail"></ion-input>
-    <div *ngIf="email?.invalid && email?.touched" class="error-message">
-      E-mail inválido ou obrigatório!
-    </div>
-  </ion-col>
-  <ion-col></ion-col>  
-</ion-row>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastro de Usuário</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<ion-row>
-  <ion-col></ion-col>
-  <ion-col>
-    <ion-input formControlName="nome" label="Nome:" placeholder="Digite seu nome"></ion-input>
-    <div *ngIf="nome?.invalid && nome?.touched" class="error-message">
-      Nome obrigatório!
-    </div>
-  </ion-col>
-  <ion-col></ion-col>  
-</ion-row>
+<ion-content>
+  <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+    
+    <!-- Campo de E-mail -->
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <ion-input 
+          formControlName="email" 
+          label="E-mail" 
+          type="email" 
+          placeholder="Digite seu e-mail"
+        ></ion-input>
+        <div *ngIf="cadastroForm.get('email')?.invalid && cadastroForm.get('email')?.touched" class="error-message">
+          E-mail inválido ou obrigatório!
+        </div>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
 
-<ion-row>
-  <ion-col></ion-col>
-  <ion-col>
-    <ion-input formControlName="cpf" label="CPF:" placeholder="Digite seu cpf"></ion-input>
-    <div *ngIf="cpf?.invalid && cpf?.touched" class="error-message">
-      CPF inválido ou obrigatório!
-    </div>
-  </ion-col>
-  <ion-col></ion-col>  
-</ion-row>
+    <!-- Campo de Nome -->
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <ion-input 
+          formControlName="nome" 
+          label="Nome" 
+          placeholder="Digite seu nome"
+        ></ion-input>
+        <div *ngIf="cadastroForm.get('nome')?.invalid && cadastroForm.get('nome')?.touched" class="error-message">
+          Nome obrigatório!
+        </div>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
 
-<ion-row>
-  <ion-col></ion-col>
-  <ion-col>
-    <ion-input formControlName="celular" label="Celular:" placeholder="Digite seu celular"></ion-input>
-    <div *ngIf="celular?.invalid && celular?.touched" class="error-message">
-      Celular inválido ou obrigatório!
-    </div>
-  </ion-col>
-  <ion-col></ion-col>  
-</ion-row>
+    <!-- Campo de CPF -->
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <ion-input 
+          formControlName="cpf" 
+          label="CPF" 
+          placeholder="Digite seu CPF"
+        ></ion-input>
+        <div *ngIf="cadastroForm.get('cpf')?.invalid && cadastroForm.get('cpf')?.touched" class="error-message">
+          CPF obrigatório!
+        </div>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
 
-<ion-row>
-  <ion-col></ion-col>
-  <ion-col>
-    <ion-input formControlName="senha" label="Senha:" placeholder="Digite sua senha" type="password"></ion-input>
-    <div *ngIf="senha?.invalid && senha?.touched" class="error-message">
-      Senha deve ter no mínimo 6 caracteres!
-    </div>
-  </ion-col>
-  <ion-col></ion-col>  
-</ion-row>
+    <!-- Campo de Celular -->
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <ion-input 
+          formControlName="celular" 
+          label="Celular" 
+          placeholder="Digite seu celular"
+        ></ion-input>
+        <div *ngIf="cadastroForm.get('celular')?.invalid && cadastroForm.get('celular')?.touched" class="error-message">
+          Celular obrigatório!
+        </div>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
 
-<ion-row>
-  <ion-col></ion-col>
-  <ion-col>
-    <ion-input formControlName="confirmarSenha" label="Confirmar Senha:" placeholder="Confirme sua senha" type="password"></ion-input>
-    <div *ngIf="confirmarSenha?.invalid && confirmarSenha?.touched" class="error-message">
-      Confirmação de senha obrigatória!
-    </div>
-  </ion-col>
-  <ion-col></ion-col>  
-</ion-row>
+    <!-- Campo de Senha -->
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <ion-input 
+          formControlName="senha" 
+          label="Senha" 
+          type="password" 
+          placeholder="Digite sua senha"
+        ></ion-input>
+        <div *ngIf="cadastroForm.get('senha')?.invalid && cadastroForm.get('senha')?.touched" class="error-message">
+          Senha deve ter no mínimo 6 caracteres!
+        </div>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+
+    <!-- Campo de Confirmar Senha -->
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <ion-input 
+          formControlName="confirmarSenha" 
+          label="Confirmar Senha" 
+          type="password" 
+          placeholder="Confirme sua senha"
+        ></ion-input>
+        <div *ngIf="cadastroForm.hasError('mismatch') && cadastroForm.get('confirmarSenha')?.touched" class="error-message">
+          As senhas não coincidem!
+        </div>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+
+    <!-- Botão de Submissão -->
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <ion-button 
+          expand="full" 
+          type="submit" 
+          [disabled]="!cadastroForm.valid"
+        >
+          Cadastrar
+        </ion-button>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+
+  </form>
+</ion-content>

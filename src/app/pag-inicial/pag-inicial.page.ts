@@ -15,10 +15,12 @@ export class  PagInicialPage {
 
   // Método para buscar produtos quando o usuário realizar a busca
   search() {
-    this.mercadoLivreService.searchProducts(this.searchTerm).subscribe(response => {
-      this.products = response.results;
+    // Corrigir para o nome correto do método
+this.mercadoLivreService.listarProdutos(this.searchTerm).subscribe(response => {
+  console.log(response);
+});
+
       console.log(this.products);  // Ver os resultados no console
-    });
+    };
   }
   
-}

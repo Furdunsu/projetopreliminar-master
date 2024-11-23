@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class PagLoginPage {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     // Criando o formulário com validações
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -25,6 +26,11 @@ export class PagLoginPage {
     } else {
       console.log('Formulário inválido');
       this.loginForm.markAllAsTouched();
+
+       // Navegar para a página inicial após o login
+       this.router.navigate(['/pagina-inicial']);  // Aqui você substitui pelo nome da sua página inicial
+      }
     }
+    
   }
-}
+

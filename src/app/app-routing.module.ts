@@ -22,13 +22,27 @@ const routes: Routes = [
   {
     path: 'pag-cadastro',
     loadChildren: () => import('./pag-cadastro/pag-cadastro.module').then( m => m.PagCadastroPageModule)
-    
   },
   {
     path: 'produto',
     loadChildren: () => import('./produto/produto.module').then( m => m.ProdutoPageModule)
   },
-  
+  {
+    path: 'cadastrar',
+    loadChildren: () => import('./cadastrar/cadastrar.module').then( m => m.CadastrarPageModule)
+  },
+  {
+    path: 'produto-detalhes/:id',  // Rota para detalhes de produto, com um parâmetro `id`
+    loadChildren: () => import('./produto-detalhes/produto-detalhes.module').then( m => m.ProdutoDetalhesPageModule)
+  },
+  {
+    path: 'carrinho',
+    loadChildren: () => import('./carrinho/carrinho.module').then( m => m.CarrinhoPageModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'pag-inicial'  // Se a rota não for encontrada, redireciona para 'pag-inicial'
+  },
 ];
 
 @NgModule({

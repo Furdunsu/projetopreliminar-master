@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ produtoDetalhes?.title }}</ion-title>
+  </ion-toolbar>
+  <ion-button routerLink="/carrinho" slot="end">
+    <ion-icon name="cart"></ion-icon>
+    Carrinho
+  </ion-button>
+  
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img [src]="produtoDetalhes?.thumbnail" alt="Imagem do produto">
+    <ion-card-header>
+      <ion-card-title>{{ produtoDetalhes?.title }}</ion-card-title>
+      <ion-card-subtitle>R$ {{ produtoDetalhes?.price | number:'1.2-2' }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ produtoDetalhes?.description }}</p>
+      <!-- Botão para adicionar ao carrinho -->
+      <ion-button expand="full" (click)="adicionarAoCarrinho(produtoDetalhes)">Adicionar ao Carrinho</ion-button>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

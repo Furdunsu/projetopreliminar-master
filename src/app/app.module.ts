@@ -17,6 +17,7 @@ import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
 import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
