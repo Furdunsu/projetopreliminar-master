@@ -5,3 +5,32 @@ ion-content {
   .italic{
     position: relative;
   }
+  ion-header {
+    background-color: #f8f8f8;
+  }
+  
+  ion-searchbar {
+    margin: 10px;
+  }
+  
+  ion-list {
+    padding: 0;
+  }
+  
+  ion-item {
+    cursor: pointer;
+  }
+  
+  ion-card {
+    cursor: pointer;
+  }
+  
+  ion-card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  ion-card-header {
+    background-color: #f1f1f1;
+  }
+  

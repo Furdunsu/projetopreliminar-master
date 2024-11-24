@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';  // Para usar a autenticação
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,8 @@ export class PagCadastroPage implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private afAuth: AngularFireAuth // Injetando o serviço de autenticação
+    private afAuth: AngularFireAuth, // Injetando o serviço de autenticação
+    private router: Router
   ) {}
 
   ngOnInit() {

@@ -1,36 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';  // Importando o Firebase Authentication
+import { Router } from '@angular/router';  // Para navegação após login
 
 @Component({
   selector: 'app-login',
-  templateUrl: 'pag-login.page.html',
-  styleUrls: ['pag-login.page.scss'],
+  templateUrl: './pag-login.page.html',
+  styleUrls: ['./pag-login.page.scss'],
 })
-export class PagLoginPage {
-  loginForm: FormGroup;
+export class PagLoginPage implements OnInit {
+  loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
-    // Criando o formulário com validações
+  constructor(
+    private fb: FormBuilder,
+    private afAuth: AngularFireAuth,  // Injetando o serviço de autenticação do Firebase
+    private router: Router  // Injetando o serviço de navegação
+  ) {}
+
+  ngOnInit() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
-  // Método para submeter o formulário
+  // Função para realizar o login
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Formulário válido', this.loginForm.value);
-      // Adicione a navegação para a página inicial
-    } else {
-      console.log('Formulário inválido');
-      this.loginForm.markAllAsTouched();
+      const { email, senha } = this.loginForm.value;
 
-       // Navegar para a página inicial após o login
-       this.router.navigate(['/pagina-inicial']);  // Aqui você substitui pelo nome da sua página inicial
-      }
+      // Autenticação com Firebase
+      this.afAuth.signInWithEmailAndPassword(email, senha)
+        .then((userCredential) => {
+          console.log('Usuário logado:', userCredential.user);
+          alert('Login realizado com sucesso!');
+          
+          // Redirecionando o usuário para a página inicial após o login
+          this.router.navigate(['/produto']);  // Substitua '/home' pela rota desejada
+        })
+        .catch((error) => {
+          console.error('Erro ao realizar login:', error.message);
+          alert('Erro ao realizar login: ' + error.message);
+        });
     }
-    
   }
-
+}

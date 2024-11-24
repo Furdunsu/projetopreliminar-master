@@ -1,6 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Cadastro de Usuário</ion-title>
+    <ion-buttons slot="start">
+      <!-- Adicionando o logo do Mercado Livre ao lado do título -->
+      <ion-img src="assets/mercado-livre.jpg" style="height: 60px;"></ion-img>
+    </ion-buttons>
+    <ion-title>Cadastro</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -122,4 +126,9 @@
     </ion-row>
 
   </form>
+  <ion-row>
+    <ion-col>
+      <p>Já tem uma conta? <a routerLink="/login">Faça login</a></p>
+    </ion-col>
+  </ion-row>
 </ion-content>
